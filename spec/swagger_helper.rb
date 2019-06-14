@@ -20,6 +20,14 @@ RSpec.configure do |config|
         version: "v1"
       },
       paths: {}
+    },
+    "v2/swagger.json" => {
+      swagger: "2.0",
+      info: {
+        title: "API V2",
+        version: "v2"
+      },
+      paths: {}
     }
   }
 end
