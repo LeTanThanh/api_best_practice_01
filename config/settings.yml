@@ -1,0 +1,28 @@
+api:
+  errors:
+    code:
+      unknow: 1000
+      accepted: 1001
+      blank: 1002
+      confirmation: 1003
+      empty: 1004
+      equal_to: 1005
+      even: 1006
+      exclusion: 1007
+      greater_than: 1008
+      greater_than_or_equal_to: 1009
+      inclusion: 1010
+      invalid: 1011
+      less_than: 1012
+      less_than_or_equal_to: 1013
+      model_invalid: 1014
+      not_a_number: 1015
+      not_an_integer: 1016
+      odd: 1017
+      other_than: 1018
+      present: 1019
+      required: 1020
+      taken: 1021
+      too_long: 1022
+      too_short: 1023
+      wrong_length: 1024

@@ -64,6 +64,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "ffaker"
 gem "pry-rails"
 gem "rswag"
+gem "config"
 
 group :development, :test do
   gem "rspec-rails"

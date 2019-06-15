@@ -3,7 +3,7 @@ class Api::V1::ApplicationController < ApplicationController
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
-  
+
   private
 
   def record_not_found error
@@ -14,9 +14,6 @@ class Api::V1::ApplicationController < ApplicationController
   end
 
   def record_invalid error
-    render json: {
-      success: false,
-      message: error.message
-    }
+    render json: Errors::RecordInvalidError.new(error).to_hash
   end
 end
