@@ -65,6 +65,7 @@ gem "ffaker"
 gem "pry-rails"
 gem "rswag"
 gem "config"
+gem "active_model_serializers"
 
 group :development, :test do
   gem "rspec-rails"

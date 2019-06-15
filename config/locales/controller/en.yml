@@ -5,3 +5,12 @@ en:
     v1:
       cars:
         not_found: "Car not found"
+        create:
+          success: "Create car success" 
+          fail: "Create car fail"
+        update:
+          success: "Update car success"
+          fail: "Update car fail"
+        destroy:
+          success: "Destroy car success"
+          fail: "Destroy car fail"

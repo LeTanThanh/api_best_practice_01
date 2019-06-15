@@ -6,9 +6,9 @@ class Api::V1::CarsController < Api::V1::ApplicationController
 
     render json: {
       success: true,
-      message: "Create car success",
+      message: t(".success"),
       data: {
-        car: @car
+        car: CarSerializer.new(@car)
       }
     }
   end
@@ -18,21 +18,17 @@ class Api::V1::CarsController < Api::V1::ApplicationController
 
     render json: {
       success: true,
-      message: "Get list cars success",
       data: {
-        cars: @cars
+        cars: ActiveModel::Serializer::CollectionSerializer.new(@cars)
       }
     }
   end
 
   def show
-    render json: @car
-
     render json: {
       success: true,
-      message: "Get car success",
       data: {
-        car: @car
+        car: CarSerializer.new(@car)
       }
     }
   end
@@ -42,9 +38,9 @@ class Api::V1::CarsController < Api::V1::ApplicationController
 
     render json: {
       success: true,
-      message: "Update car success",
+      message: t(".success"),
       data: {
-        car: @car
+        car: CarSerializer.new(@car)
       }
     }
   end
@@ -54,7 +50,7 @@ class Api::V1::CarsController < Api::V1::ApplicationController
 
     render json: {
       success: true,
-      message: "Delete car success"
+      message: t(".success"),
     }
   end
 
