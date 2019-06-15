@@ -26,3 +26,4 @@ api:
       too_long: 1022
       too_short: 1023
       wrong_length: 1024
+      not_found: 1025

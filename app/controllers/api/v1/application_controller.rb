@@ -7,10 +7,10 @@ class Api::V1::ApplicationController < ApplicationController
   private
 
   def record_not_found error
-    render json: {
-      success: false,
-      message: error.message
-    }
+    i18n_path = params[:controller].split("/").join(".")
+    message = I18n.t "#{i18n_path}.not_found"
+
+    render json: Errors::RecordNotFoundError.new(error, message).to_hash
   end
 
   def record_invalid error

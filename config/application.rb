@@ -17,5 +17,6 @@ module ApiBestPractice01
     # the framework and any gems in your application.
 
     config.eager_load_paths << Rails.root.join("lib")
+    config.i18n.load_path += Dir["#{Rails.root.to_s}/config/locales/**/*.{rb,yml}"]
   end
 end

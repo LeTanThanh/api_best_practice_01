@@ -1,0 +1,7 @@
+en:
+  hello_ahihi: "Hello world"
+  demo: "ahihi"
+  api:
+    v1:
+      cars:
+        not_found: "Car not found"
