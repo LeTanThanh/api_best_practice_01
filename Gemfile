@@ -66,6 +66,7 @@ gem "pry-rails"
 gem "rswag"
 gem "config"
 gem "active_model_serializers"
+gem "devise"
 
 group :development, :test do
   gem "rspec-rails"
