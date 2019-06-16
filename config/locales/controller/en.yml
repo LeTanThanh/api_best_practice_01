@@ -8,6 +8,9 @@ en:
         create:
           success: "Create car success" 
           fail: "Create car fail"
+        index:
+          success: "Get list cars success"
+          fail: "Get list cars fail"
         update:
           success: "Update car success"
           fail: "Update car fail"

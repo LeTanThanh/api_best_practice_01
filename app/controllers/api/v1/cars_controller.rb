@@ -16,10 +16,9 @@ class Api::V1::CarsController < Api::V1::ApplicationController
 
     render json: {
       success: true,
-      data: {
-        cars: ActiveModel::Serializer::CollectionSerializer.new(@cars)
-      }
-    }
+      message: t(".success"),
+      data: ActiveModel::Serializer::CollectionSerializer.new(@cars)
+    }, status: :ok
   end
 
   def show
