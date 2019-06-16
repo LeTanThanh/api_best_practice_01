@@ -12,6 +12,7 @@ module Errors
     def to_hash
       {
         success: false,
+        message: @message,
         errors: errors
       }
     end

@@ -1,7 +1,8 @@
 module Errors
   class RecordInvalidError < ApplicationError
-    def initialize error
+    def initialize error, message
       @error = error
+      @message = message
       @record = @error.record
 
       @resource = @record.class.name.underscore
@@ -11,6 +12,7 @@ module Errors
     def to_hash
       {
         success: false,
+        message: @message,
         errors: errors
       }
     end

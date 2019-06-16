@@ -59,6 +59,7 @@ describe "Cars API", swagger_doc: "v1/swagger.json" do
         schema type: :object,
           properties: {
             success: {type: :boolean, description: "Get car detail fail"},
+            message: {type: :string, description: "Get car detail fail message"},
             errors: {
               type: :array,
               items: {
@@ -75,6 +76,7 @@ describe "Cars API", swagger_doc: "v1/swagger.json" do
         
           examples "Car not found" => {
             success: false,
+            message: "Car not found",
             errors: [
               {
                 resource: "car",
@@ -92,6 +94,7 @@ describe "Cars API", swagger_doc: "v1/swagger.json" do
         schema type: :object,
           properties: {
             success: {type: :boolean, description: "Update car fail"},
+            message: {type: :string, description: "Update car fail message"},
             errors: {
               type: :array,
               items: {
@@ -108,6 +111,7 @@ describe "Cars API", swagger_doc: "v1/swagger.json" do
 
         examples "Name can't be blank" => {
           success: false,
+          message: "Update car fail",
           errors: [
             {
               resource: "car",
@@ -119,6 +123,7 @@ describe "Cars API", swagger_doc: "v1/swagger.json" do
         },
         "Name has already been taken" => {
           success: false,
+          message: "Update car fail",
           errors: [
             {
               resource: "car",
@@ -130,6 +135,7 @@ describe "Cars API", swagger_doc: "v1/swagger.json" do
         },
         "Color can't be blank" => {
           success: false,
+          message: "Update car fail",
           errors: [
             {
               resource: "car",
@@ -141,6 +147,7 @@ describe "Cars API", swagger_doc: "v1/swagger.json" do
         },
         "Color has already been taken" => {
           success: false,
+          message: "Update car fail",
           errors: [
             {
               resource: "car",
@@ -152,6 +159,7 @@ describe "Cars API", swagger_doc: "v1/swagger.json" do
         },
         "Code can't be blank" => {
           success: false,
+          message: "Update car fail",
           errors: [
             {
               resource: "car",
@@ -163,6 +171,7 @@ describe "Cars API", swagger_doc: "v1/swagger.json" do
         },
         "Code has already been taken" => {
           success: false,
+          message: "Update car fail",
           errors: [
             {
               resource: "car",
@@ -174,6 +183,7 @@ describe "Cars API", swagger_doc: "v1/swagger.json" do
         },
         "Description can't be blank" => {
           success: false,
+          message: "Update car fail",
           errors: [
             {
               resource: "car",
@@ -185,6 +195,7 @@ describe "Cars API", swagger_doc: "v1/swagger.json" do
         },
         "Description has already been taken" => {
           success: false,
+          message: "Update car fail",
           errors: [
             {
               resource: "car",

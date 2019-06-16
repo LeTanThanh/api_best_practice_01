@@ -14,6 +14,9 @@ module RescueFromError extend ActiveSupport::Concern
   end
 
   def record_invalid error
-    render json: Errors::RecordInvalidError.new(error).to_hash, status: :unprocessable_entity
+    i18n_path = params[:controller].split("/").join(".") << ".#{params[:action]}"
+    message = I18n.t "#{i18n_path}.fail"
+
+    render json: Errors::RecordInvalidError.new(error, message).to_hash, status: :unprocessable_entity
   end
 end

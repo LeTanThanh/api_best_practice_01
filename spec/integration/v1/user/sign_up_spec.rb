@@ -51,6 +51,7 @@ describe "Users API", swagger_doc: "v1/swagger.json" do
         schema type: :object,
           properties: {
             success: {type: :boolean, description: "Sign up user fail"},
+            message: {type: :string, description: "Sign up user fail message"},
             errors: {
               type: :array,
               items: {
@@ -67,6 +68,7 @@ describe "Users API", swagger_doc: "v1/swagger.json" do
         
         examples "Email can't be blank" => {
           success: false,
+          message: "Sign up user fail",
           errors: [
             {
               resource: "user",
@@ -78,6 +80,7 @@ describe "Users API", swagger_doc: "v1/swagger.json" do
         },
         "Email is invalid" => {
           success: false,
+          message: "Sign up user fail",
           errors: [
             {
               resource: "user",
@@ -89,6 +92,7 @@ describe "Users API", swagger_doc: "v1/swagger.json" do
         },
         "Email has already been take" => {
           success: false,
+          message: "Sign up user fail",
           errors: [
             {
               resource: "user",
@@ -100,6 +104,7 @@ describe "Users API", swagger_doc: "v1/swagger.json" do
         },
         "Password can't be blank" => {
           success: false,
+          message: "Sign up user fail",
           errors: [
             {
               resource: "user",
@@ -111,6 +116,7 @@ describe "Users API", swagger_doc: "v1/swagger.json" do
         },
         "Password is too short (minimum is 6 characters)" => {
           success: false,
+          message: "Sign up user fail",
           errors: [
             {
               resource: "user",
@@ -122,6 +128,7 @@ describe "Users API", swagger_doc: "v1/swagger.json" do
         },
         "Password is too long (maximum is 128 characters)" => {
           success: false,
+          message: "Sign up user fail",
           errors: [
             {
               resource: "user",
@@ -133,6 +140,7 @@ describe "Users API", swagger_doc: "v1/swagger.json" do
         },
         "Password confirmation can't be blank" => {
           success: false,
+          message: "Sign up user fail",
           errors: [
             {
               resource: "user",
@@ -144,6 +152,7 @@ describe "Users API", swagger_doc: "v1/swagger.json" do
         },
         "Password confirmation doesn't match Password" => {
           success: false,
+          message: "Sign up user fail",
           errors: [
             {
               resource: "user",

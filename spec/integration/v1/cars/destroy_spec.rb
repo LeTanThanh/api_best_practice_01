@@ -28,6 +28,7 @@ describe "Cars API", swagger_doc: "v1/swagger.json" do
         schema type: :object,
           properties: {
             success: {type: :boolean, description: "Get car detail fail"},
+            message: {type: :string, description: "Get car detail fail message"},
             errors: {
               type: :array,
               items: {
@@ -44,6 +45,7 @@ describe "Cars API", swagger_doc: "v1/swagger.json" do
         
           examples "Car not found" => {
             success: false,
+            message: "Car not found",
             errors: [
               {
                 resource: "car",
