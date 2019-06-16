@@ -1,6 +1,4 @@
 en:
-  hello_ahihi: "Hello world"
-  demo: "ahihi"
   api:
     v1:
       cars:
@@ -20,3 +18,7 @@ en:
         destroy:
           success: "Destroy car success"
           fail: "Destroy car fail"
+      users:
+        sign_up:
+          success: "Sign up user success"
+          fail: "Sign up user fail"
