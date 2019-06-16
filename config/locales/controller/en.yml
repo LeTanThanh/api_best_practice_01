@@ -11,6 +11,9 @@ en:
         index:
           success: "Get list cars success"
           fail: "Get list cars fail"
+        show:
+          success: "Get car detail success"
+          fail: "Get car detail fail"
         update:
           success: "Update car success"
           fail: "Update car fail"

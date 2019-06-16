@@ -24,10 +24,9 @@ class Api::V1::CarsController < Api::V1::ApplicationController
   def show
     render json: {
       success: true,
-      data: {
-        car: CarSerializer.new(@car)
-      }
-    }
+      message: t(".success"),
+      data: CarSerializer.new(@car)
+    }, status: :ok
   end
 
   def update
@@ -39,7 +38,7 @@ class Api::V1::CarsController < Api::V1::ApplicationController
       data: {
         car: CarSerializer.new(@car)
       }
-    }
+    }, status: :accepted
   end
 
   def destroy
@@ -54,7 +53,7 @@ class Api::V1::CarsController < Api::V1::ApplicationController
   private 
 
   def load_car
-    @car = Car.find_by! id: params[:id]
+    @car = Car.find params[:id]
   end
 
   def car_params
