@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :users do
         collection do
           post :sign_up
+          post :sign_in
         end
       end
     end

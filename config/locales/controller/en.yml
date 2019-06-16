@@ -1,6 +1,8 @@
 en:
   api:
     v1:
+      errors:
+        authenticate: "Please check email and password"
       cars:
         not_found: "Car not found"
         create:
@@ -22,3 +24,5 @@ en:
         sign_up:
           success: "Sign up user success"
           fail: "Sign up user fail"
+        sign_in:
+          success: "Sign in user success"

@@ -53,7 +53,7 @@ class Api::V1::CarsController < Api::V1::ApplicationController
   private 
 
   def load_car
-    @car = Car.find params[:id]
+    @car = Car.find_by id: params[:id]
   end
 
   def car_params
