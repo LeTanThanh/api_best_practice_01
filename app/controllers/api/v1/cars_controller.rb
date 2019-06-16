@@ -47,7 +47,7 @@ class Api::V1::CarsController < Api::V1::ApplicationController
     render json: {
       success: true,
       message: t(".success"),
-    }
+    }, status: :accepted
   end
 
   private 
