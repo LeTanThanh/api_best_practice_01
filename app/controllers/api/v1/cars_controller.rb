@@ -53,7 +53,9 @@ class Api::V1::CarsController < Api::V1::ApplicationController
   private 
 
   def load_car
-    @car = Car.find_by id: params[:id]
+    @car = Car.find_by! id: params[:id]
+
+    raise Errors::AuthorizationError.new unless @current_user == @car.user
   end
 
   def car_params
