@@ -7,7 +7,7 @@ describe "Cars API", swagger_doc: "v1/swagger.json" do
       consumes "application/json"
       produces "application/json"
 
-      parameter name: :body, in: :body, required: :true, schema: {
+      parameter name: :body, in: :body, required: :true, description: "Create car's params", schema: {
         type: :object,
         properties: {
           car: {
@@ -49,6 +49,21 @@ describe "Cars API", swagger_doc: "v1/swagger.json" do
             code: "123456789",
             description: "Car Vinfast"
           }
+        }
+
+        run_test!
+      end
+
+      response "401", "Unauthorized" do
+        schema type: :object,
+          properties: {
+            success: {type: :boolean, description: "Unauthorized"},
+            message: {type: :boolean, description: "Unauthorized message"}
+          }
+
+        examples "Unauthorized" => {
+          success: false,
+          message: "Please check again your email, password or your token token"
         }
 
         run_test!

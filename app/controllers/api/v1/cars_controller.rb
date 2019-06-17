@@ -2,7 +2,7 @@ class Api::V1::CarsController < Api::V1::ApplicationController
   before_action :load_car, only: %i(show update destroy)
 
   def create
-    @car = Car.create! car_params
+    @car = @current_user.cars.create! car_params
 
     render json: {
       success: true,
