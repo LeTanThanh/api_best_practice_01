@@ -7,6 +7,7 @@ describe "Cars API", swagger_doc: "v1/swagger.json" do
       consumes "application/json"
       produces "application/json"
 
+      parameter name: "X-TOKEN", type: :string, in: :header, required: true, description: "X-TOKEN for API request", example: "123456789"
       parameter name: :body, in: :body, required: :true, description: "Create car's params", schema: {
         type: :object,
         properties: {

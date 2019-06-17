@@ -6,6 +6,8 @@ describe "Cars API", swagger_doc: "v1/swagger.json" do
       tags "Cars"
       produces "application/json"
 
+      parameter name: "X-TOKEN", type: :string, in: :header, required: true, description: "X-TOKEN for API request", example: "123456789"
+
       response "200", "List cars success" do
         schema type: :object,
           properties: {

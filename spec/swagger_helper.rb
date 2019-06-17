@@ -19,7 +19,9 @@ RSpec.configure do |config|
         title: "API V1",
         version: "v1"
       },
-      paths: {}
+      paths: {},
+      schemes: ["http"],
+      host: "localhost:3000"
     },
     "v2/swagger.json" => {
       swagger: "2.0",
