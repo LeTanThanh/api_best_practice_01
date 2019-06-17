@@ -7,7 +7,7 @@ module AuthenticateUser extend ActiveSupport::Concern
 
   def load_curent_user
     @token = Token.find_by token: request.headers["X-TOKEN"]
-    raise Errors::AuthenticateError.new unless @token
+    raise Errors::AuthenticationError.new unless @token
 
     @current_user = @token.user
   end

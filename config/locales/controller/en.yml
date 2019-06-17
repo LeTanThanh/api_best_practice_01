@@ -2,7 +2,8 @@ en:
   api:
     v1:
       errors:
-        authenticate: "Please check again your email, password or your token token"
+        authentication: "Please check again your email, password or your token token"
+        authorization: "Please check again your permission"
       cars:
         not_found: "Car not found"
         create:
@@ -21,6 +22,7 @@ en:
           success: "Destroy car success"
           fail: "Destroy car fail"
       users:
+        not_found: "User not found"
         sign_up:
           success: "Sign up user success"
           fail: "Sign up user fail"
@@ -30,3 +32,6 @@ en:
         sign_out:
           success: "Sign out success"
           fail: "Sign out fail"
+        update:
+          success: "Update user success"
+          fail: "Update user fail"

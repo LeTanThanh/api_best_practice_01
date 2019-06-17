@@ -1,7 +1,7 @@
 module Errors
-  class AuthenticateError < ApplicationError
+  class AuthorizationError < ApplicationError
     def initialize message = nil
-      @message = message || message = I18n.t("api.v1.errors.authenticate")
+      @message = message || I18n.t("api.v1.errors.authorization")
     end
 
     def to_hash

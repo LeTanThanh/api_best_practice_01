@@ -3,7 +3,11 @@ module RescueFromError extend ActiveSupport::Concern
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
-    rescue_from Errors::AuthenticateError, with: :authenticate_error
+    # need to check again
+    # rescue_from StandardError, with: :standard_error
+
+    rescue_from Errors::AuthenticationError, with: :authentication_error
+    rescue_from Errors::AuthorizationError, with: :authorization_error
   end
 
   private
@@ -22,7 +26,15 @@ module RescueFromError extend ActiveSupport::Concern
     render json: Errors::RecordInvalidError.new(error, message).to_hash, status: :unprocessable_entity
   end
 
-  def authenticate_error error
+  def authentication_error error
     render json: error.to_hash, status: :unauthorized
+  end
+
+  def authorization_error error
+    render json: error.to_hash, status: :forbidden
+  end
+
+  def standard_error error
+    render json: Errors::ApplicationError.new(error).to_hash, status: :internal_server_error
   end
 end

@@ -7,7 +7,7 @@ describe "Users API", swagger_doc: "v1/swagger.json" do
       consumes "application/json"
       produces "application/json"
 
-      parameter name: :body, in: :body, required: true, schema: {
+      parameter name: :body, in: :body, required: true, description: "User's sign in body", schema: {
         type: :object,
         properties: {
           user: {
@@ -39,7 +39,7 @@ describe "Users API", swagger_doc: "v1/swagger.json" do
           data: {
             id: 1,
             email: "some.one@sun-asterisk.com",
-            token: "xxx-xxx-xxx"
+            token: "123456789"
           }
         }
 
@@ -49,11 +49,11 @@ describe "Users API", swagger_doc: "v1/swagger.json" do
       response "401", "Unauthorized" do
         schema type: :object,
           properties: {
-            success: {type: :boolean, description: "Sign in user fail"},
-            message: {type: :boolean, description: "Sign in user fail message"}
+            success: {type: :boolean, description: "Unauthorized"},
+            message: {type: :boolean, description: "Unauthorized message"}
           }
 
-        examples "Sign in user fail" => {
+        examples "Unauthorized" => {
           success: false,
           message: "Please check again your email, password or your token token"
         }

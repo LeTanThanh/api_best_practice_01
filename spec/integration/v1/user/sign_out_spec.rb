@@ -5,7 +5,7 @@ describe "Users API", swagger_doc: "v1/swagger.json" do
       consumes "application/json"
       produces "application/json"
 
-      parameter name: "X-TOKEN", type: :string, in: :header, description: "X-TOKEN for every API request", example: "123456789"
+      parameter name: "X-TOKEN", type: :string, in: :header, required: :true, description: "X-TOKEN for API request", example: "123456789"
 
       response "200", "Sign out user success" do
         schema type: :object,
@@ -25,11 +25,11 @@ describe "Users API", swagger_doc: "v1/swagger.json" do
       response "401", "Unauthorized" do
         schema type: :object,
           properties: {
-            success: {type: :boolean, description: "Sign out user fail"},
-            message: {type: :boolean, description: "Sign out user fail message"}
+            success: {type: :boolean, description: "Unauthorized"},
+            message: {type: :boolean, description: "Unauthorized message"}
           }
 
-        examples "Sign in user fail" => {
+        examples "Unauthorized" => {
           success: false,
           message: "Please check again your email, password or your token token"
         }

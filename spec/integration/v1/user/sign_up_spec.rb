@@ -7,7 +7,7 @@ describe "Users API", swagger_doc: "v1/swagger.json" do
       consumes "application/json"
       produces "application/json"
 
-      parameter name: :body, in: :body, required: :true, schema: {
+      parameter name: :body, in: :body, required: :true, description: "User's sign up body", schema: {
         type: :object,
         properties: {
           user: {
