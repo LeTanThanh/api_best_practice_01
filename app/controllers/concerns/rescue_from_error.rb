@@ -1,10 +1,9 @@
 module RescueFromError extend ActiveSupport::Concern
   included do
+    rescue_from StandardError, with: :standard_error
+
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
-
-    # need to check again
-    # rescue_from StandardError, with: :standard_error
 
     rescue_from Errors::AuthenticationError, with: :authentication_error
     rescue_from Errors::AuthorizationError, with: :authorization_error
