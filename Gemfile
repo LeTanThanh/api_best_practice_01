@@ -67,6 +67,7 @@ gem "rswag"
 gem "config"
 gem "active_model_serializers"
 gem "devise"
+gem "rack-cors"
 
 group :development, :test do
   gem "rspec-rails"
