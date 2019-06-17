@@ -21,7 +21,40 @@ RSpec.configure do |config|
       },
       paths: {},
       schemes: ["http"],
-      host: "localhost:3000"
+      host: "localhost:3000",
+      definitions: {
+        errors: {
+          authentication: {
+            schema: {
+              type: :object,
+              properties: {
+                success: {type: :boolean, description: "Unauthorized"},
+                message: {type: :boolean, description: "Unauthorized message"}
+              }
+            },
+
+            example: {
+              success: false,
+              message: "Please check again your email, password or your token token"
+            }
+          },
+
+          authorization: {
+            schema: {
+              type: :object,
+              properties: {
+                success: {type: :boolean, description: "Forbidden"},
+                message: {type: :boolean, description: "Forbidden message"}
+              }
+            },
+
+            example: {
+              success: false,
+              message: "Please check again your permission"
+            }
+          }
+        }
+      }
     },
     "v2/swagger.json" => {
       swagger: "2.0",
