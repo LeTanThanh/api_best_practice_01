@@ -48,6 +48,21 @@ describe "Cars API", swagger_doc: "v1/swagger.json" do
 
         run_test!
       end
+
+      response "401", "Unauthorized" do
+        schema type: :object,
+          properties: {
+            success: {type: :boolean, description: "Unauthorized"},
+            message: {type: :boolean, description: "Unauthorized message"}
+          }
+
+        examples "Unauthorized" => {
+          success: false,
+          message: "Please check again your email, password or your token token"
+        }
+
+        run_test!
+      end
     end
   end
 end
