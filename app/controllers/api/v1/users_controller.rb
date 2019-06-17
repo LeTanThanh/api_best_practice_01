@@ -1,4 +1,6 @@
 class Api::V1::UsersController < Api::V1::ApplicationController
+  skip_before_action :load_curent_user, only: %i|sign_up sign_in|
+
   def sign_up
     @user = User.create! user_params
 
@@ -22,9 +24,24 @@ class Api::V1::UsersController < Api::V1::ApplicationController
     }, status: :created
   end
 
+  def sign_out
+    @token.destroy
+
+    render json: {
+      success: true,
+      message: t(".success")
+    }, status: :ok
+  end
+
+  def update
+    
+  end
+
   private
 
   def user_params
     params.require(:user).permit :email, :password, :password_confirmation
   end
+
+
 end

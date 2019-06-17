@@ -55,7 +55,7 @@ describe "Users API", swagger_doc: "v1/swagger.json" do
 
         examples "Sign in user fail" => {
           success: false,
-          message: "Please check email and password"
+          message: "Please check again your email, password or your token token"
         }
 
         run_test!

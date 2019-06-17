@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         collection do
           post :sign_up
           post :sign_in
+          delete :sign_out
         end
       end
     end
