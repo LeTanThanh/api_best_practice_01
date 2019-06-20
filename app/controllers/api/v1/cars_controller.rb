@@ -35,9 +35,7 @@ class Api::V1::CarsController < Api::V1::ApplicationController
     render json: {
       success: true,
       message: t(".success"),
-      data: {
-        car: CarSerializer.new(@car)
-      }
+      data: CarSerializer.new(@car)
     }, status: :accepted
   end
 

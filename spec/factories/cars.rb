@@ -2,9 +2,9 @@ FactoryBot.define do
   factory :car do
     user
 
-    name { "Car SunInc" }
-    color { "Red" }
-    code { "0123456789"}
-    description { "Example car" }
+    name { "Car-#{FFaker::Lorem.word}" }
+    color { FFaker::Color.name }
+    code { FFaker::Code.ean }
+    description { FFaker::Lorem.sentence }
   end
 end
