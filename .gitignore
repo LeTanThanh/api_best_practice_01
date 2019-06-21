@@ -32,3 +32,6 @@
 
 # Ignore swagger files
 /swagger
+
+# Ignore coverage files
+/coverage
