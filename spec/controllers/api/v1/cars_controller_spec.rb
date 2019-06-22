@@ -17,23 +17,11 @@ RSpec.describe Api::V1::CarsController, type: :controller do
 
   describe "POST #create" do
     context "unauthorized user" do
-      let(:response_body) do
-        {
-          success: false,
-          message: "Please check again your email, password or your token token"
-        }
-      end
-
       before(:example) do
-        request.headers["X-TOKEN"] = ""
-      end
-
-      it "raise authentication error" do
         post :create, params: params
-
-        expect(response.status).to eq 401
-        expect(response.body).to eq response_body.to_json
       end
+
+      include_examples "unauthorized user"
     end
 
     context "authorized user" do
@@ -231,23 +219,11 @@ RSpec.describe Api::V1::CarsController, type: :controller do
 
   describe "GET #index" do
     context "unauthorized user" do
-      let(:response_body) do
-        {
-          success: false,
-          message: "Please check again your email, password or your token token"
-        }
-      end
-
       before(:example) do
-        request.headers["X-TOKEN"] = ""
+        get :index
       end
 
-      it "raise authentication error" do
-        post :create, params: params
-
-        expect(response.status).to eq 401
-        expect(response.body).to eq response_body.to_json
-      end
+      include_examples "unauthorized user"
     end
 
     context "authorized user" do
@@ -276,23 +252,11 @@ RSpec.describe Api::V1::CarsController, type: :controller do
 
   describe "GET #show" do
     context "unauthorized user" do
-      let(:response_body) do
-        {
-          success: false,
-          message: "Please check again your email, password or your token token"
-        }
-      end
-
       before(:example) do
-        request.headers["X-TOKEN"] = ""
-      end
-
-      it "raise authentication error" do
         post :create, params: params
-
-        expect(response.status).to eq 401
-        expect(response.body).to eq response_body.to_json
       end
+
+      include_examples "unauthorized user"
     end
 
     context "authorized user" do
@@ -318,68 +282,30 @@ RSpec.describe Api::V1::CarsController, type: :controller do
       end
 
       context "car not found" do
-        let(:response_body) do
-          {
-            success: false,
-            message: "Car not found",
-            errors: [
-              {
-                resource: "car",
-                field: nil,
-                code: 1025,
-                message: "Car not found"
-              }
-            ]
-          }
-        end
-
-        it "raise record_not_found error" do
+        before(:example) do
           get :show, params: {id: 0}
-
-          expect(response.status).to eq 404
-          expect(response.body).to eq response_body.to_json
         end
+
+        include_examples "car not found"
       end
 
       context "car belong to other user" do
-        let(:other_user) { create :user }
-        let(:other_car) { create :car, user: other_user }
-        let(:response_body) do
-          {
-            success: false,
-            message: "Please check again your permission"
-          }
-        end
-
-        it "raise authorization error" do
+        before(:example) do
           get :show, params: { id: other_car.id }
-
-          expect(response.status).to eq 403
-          expect(response.body).to eq response_body.to_json
         end
+
+        include_examples "car not belongs to user"
       end
     end
   end
 
   describe "PATCH #update" do
     context "unauthorized user" do
-      let(:response_body) do
-        {
-          success: false,
-          message: "Please check again your email, password or your token token"
-        }
-      end
-
       before(:example) do
-        request.headers["X-TOKEN"] = ""
+        patch :update, params: params.merge(id: car.id)
       end
 
-      it "raise authentication error" do
-        post :create, params: params
-
-        expect(response.status).to eq 401
-        expect(response.body).to eq response_body.to_json
-      end
+      include_examples "unauthorized user"
     end
 
     context "authorized user" do
@@ -603,68 +529,30 @@ RSpec.describe Api::V1::CarsController, type: :controller do
       end
 
       context "car not found" do
-        let(:response_body) do
-          {
-            success: false,
-            message: "Car not found",
-            errors: [
-              {
-                resource: "car",
-                field: nil,
-                code: 1025,
-                message: "Car not found"
-              }
-            ]
-          }
-        end
-
-        it "raise record_not_found error" do
+        before(:example) do
           patch :update, params: params.merge(id: 0)
-
-          expect(response.status).to eq 404
-          expect(response.body).to eq response_body.to_json
         end
+
+        include_examples "car not found"
       end
 
       context "car belong to other user" do
-        let(:other_user) { create :user }
-        let(:other_car) { create :car, user: other_user }
-        let(:response_body) do
-          {
-            success: false,
-            message: "Please check again your permission"
-          }
-        end
-
-        it "raise authorization error" do
+        before(:example) do
           patch :update, params: params.merge(id: other_car.id)
-
-          expect(response.status).to eq 403
-          expect(response.body).to eq response_body.to_json
         end
+
+        include_examples "car not belongs to user"
       end
     end
   end
 
   describe "DELETE #destroy" do
     context "unauthorized user" do
-      let(:response_body) do
-        {
-          success: false,
-          message: "Please check again your email, password or your token token"
-        }
-      end
-
       before(:example) do
-        request.headers["X-TOKEN"] = ""
-      end
-
-      it "raise authentication error" do
         delete :destroy, params: { id: car.id }
-
-        expect(response.status).to eq 401
-        expect(response.body).to eq response_body.to_json
       end
+
+      include_examples "unauthorized user"
     end
 
     context "authorized user" do
@@ -689,45 +577,19 @@ RSpec.describe Api::V1::CarsController, type: :controller do
       end
 
       context "car not found" do
-        let(:response_body) do
-          {
-            success: false,
-            message: "Car not found",
-            errors: [
-              {
-                resource: "car",
-                field: nil,
-                code: 1025,
-                message: "Car not found"
-              }
-            ]
-          }
-        end
-
-        it "raise record_not_found error" do
+        before(:example) do
           delete :destroy, params: { id: 0 }
-
-          expect(response.status).to eq 404
-          expect(response.body).to eq response_body.to_json
         end
+
+        include_examples "car not found"
       end
 
       context "car belong to other user" do
-        let(:other_user) { create :user }
-        let(:other_car) { create :car, user: other_user }
-        let(:response_body) do
-          {
-            success: false,
-            message: "Please check again your permission"
-          }
-        end
-
-        it "raise authorization error" do
+        before(:example) do
           delete :destroy, params: { id: other_car.id }
-
-          expect(response.status).to eq 403
-          expect(response.body).to eq response_body.to_json
         end
+
+        include_examples "car not belongs to user"
       end
     end
   end
